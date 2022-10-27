@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            function Queue(){
+                // 属性
+                this.items = [];
+
+                // 方法
+                // 1、将元素加入队列中
+                Queue.prototype.push = function(element){
+                    this.items.push(element)
+                }
+                // 2、从队列中删除最前面的元素
+                Queue.prototype.shift = function(){
+                    return this.items.shift();
+                }
+                // 3、查看最前面的元素
+                Queue.prototype.peek = function(){
+                    return this.items[0];
+                }
+                // 4、查看队列是否为空
+                Queue.prototype.isEmpty = function(){
+                    return this.items.length === 0;
+                }
+                // 5、查看队列元素的个数
+                Queue.prototype.size = function(){
+                    return this.items.length;
+                }
+                // 6、tostring方法
+                Queue.prototype.toString  = function(){
+                    return this.items.join('');
+                }
+        }
+        // 使用队列
+        let queue = new Queue();
+
+        function passGame(nameList,num){
+            // 1、创建一个队列结构
+            let queue = new Queue();
+
+            // 2、将所有人一次放入队列中
+            for(let i = 0; i < nameList.length; i++){
+                queue.push(nameList[i]);
+            }
+
+            // 3、开始数数字
+            // 开始数数字，不是num的时候重新加入到队列末尾
+            // 是num的是后，将其中队列中删除,数字之前的重新放入队列末尾
+            while(queue.size() > 1){
+                for(let i = 0; i < num - 1; i++){
+                queue.push(queue.shift())
+            }
+            // 3.2删除num这个人
+            queue.shift()
+            }
+            // 取出这个人
+            console.log(queue.peek());
+            console.log(queue.size());
+            console.log(nameList.indexOf(queue.peek()));
+        }
+        let names = ['李四','张三','王五','张飞','曹超','关羽'];
+        passGame(names,3);
+    </script>
+    
+</body>
+</html>

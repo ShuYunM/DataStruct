@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function LinkedList() {
+        // 1、初始化链表：节点类
+        function Node(data) {
+          this.data = data;
+          this.next = null;
+        }
+        // 属性
+        this.head = null;
+        this.length = 0;
+
+        // 2、获取链表的长度
+        LinkedList.prototype.size = function () {
+          return this.length;
+        };
+
+        // 3、根据位置获取链表(按位置查找)
+        LinkedList.prototype.chatAt = function (position) {
+          if (position < 0 || position >= this.length) return null;
+          // 1.定义变量, 保存信息
+          let current = this.head;
+          let index = 0;
+          // 2.找到元素所在的位置
+          while (index++ !== position) {
+            current = current.next;
+          }
+          // 3.来到这个位置, 说明没有找到, 则返回-1
+          return current.data;
+        };
+
+        // 4、根据元素获取链表中的位置(按值查找)
+        LinkedList.prototype.indexOf = function (element) {
+          // 1.定义变量, 保存信息
+          let current = this.head;
+          let index = 0;
+          // 2.找到元素所在的位置
+          while (current) {
+            if (current.data === element) {
+              return index;
+            }
+            index++;
+            current = current.next;
+          }
+          // 3.来到这个位置, 说明没有找到, 则返回-1
+          return -1;
+        };
+
+        // 添加新元素，追加方法
+        LinkedList.prototype.append = function (data) {
+          let newNode = new Node(data);
+          if (this.length === 0) {
+            //是第一个节点
+            this.head = newNode;
+          } else {
+            // 不是第一个节点，从第一个节点开始查找
+            let current = this.head;
+            // 找到最后一个节点
+            while (current.next) {
+              current = current.next;
+            }
+            // 让最后一个节点的next指向新的节点
+            current.next = newNode;
+          }
+          this.length += 1;
+        };
+
+        // 5、insert方法(插入)
+        LinkedList.prototype.insert = function (position, data) {
+          // 1、对position进行越界判断
+          //要插入的位置小于0或者大于总体长度
+          if (position < 0 || position > this.length) return false;
+          // 2、根据data创建newNode
+          let newNode = new Node(data);
+          // 3、判断是否插入的是第一个
+          if (position == 0) {
+            newNode.next = this.head;
+            this.head = newNode;
+          } else {
+            let index = 0;
+            let current = this.head;
+            let previous = null;
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
+            newNode.next = current;
+            previous.next = newNode;
+          }
+          this.length += 1;
+          return true;
+        };
+
+        // 6、根据位置移除节点(删除位置i的数据元素)
+        LinkedList.prototype.removeAt = function (position) {
+          // 1.检测越界问题: 越界移除失败, 返回null
+          if (position < 0 || position >= this.length) return null;
+
+          // 2.定义变量, 保存信息
+          var current = this.head;
+          var previous = null;
+          var index = 0;
+
+          // 3.判断是否是移除第一项
+          if (position === 0) {
+            this.head = current.next;
+          } else {
+            while (index++ < position) {
+              previous = current;
+              current = current.next;
+            }
+            previous.next = current.next;
+          }
+          // 4.length-1
+          this.length--;
+          // 5.返回移除的数据
+          return current.data;
+        };
+
+        // 7、toString方法(遍历)
+        LinkedList.prototype.toString = function () {
+          // 1、定义变量
+          let current = this.head;
+
+          let listString = "";
+          //2、循环获取一个个的节点
+          while (current) {
+            listString += current.data + "";
+            current = current.next;
+          }
+          return listString;
+        };
+      }
+      // 8、合并链表
+      function merge(preve, next) {
+        let current = preve.head;
+        // console.log("current", current);
+        while (current.next) {
+          current = current.next;
+        }
+        current.next = next.head;
+      }
+
+      // 9、销毁链表
+      function del() {
+        if (list) {
+          list = null;
+          return true;
+        }
+        return false;
+      }
+      // 测试
+      let list = new LinkedList();
+      let a = new LinkedList();
+      //   测试追加方法
+      list.append("abc");
+      list.append("defg");
+      // a.append("123");
+      // merge(list, a);
+      console.log(list);
+      // alert(list);
+      alert(list.chatAt(1));
+    </script>
+  </body>
+</html>
