@@ -50,24 +50,24 @@ function Dictionay() {
   };
 }
 
-// 创建字典对象
-var dict = new Dictionay();
+// // 创建字典对象
+// var dict = new Dictionay();
 
-// 在字典中添加元素
-dict.set("age", 18);
-dict.set("name", "Coderwhy");
-dict.set("height", 1.88);
-dict.set("address", "广州市");
+// // 在字典中添加元素
+// dict.set("age", 18);
+// dict.set("name", "Coderwhy");
+// dict.set("height", 1.88);
+// dict.set("address", "广州市");
 
-// 获取字典的信息
-alert(dict.keys()); // age,name,height,address
-alert(dict.values()); // 18,Coderwhy,1.88,广州市
-alert(dict.size()); // 4
-alert(dict.get("name")); // Coderwhy
+// // 获取字典的信息
+// alert(dict.keys()); // age,name,height,address
+// alert(dict.values()); // 18,Coderwhy,1.88,广州市
+// alert(dict.size()); // 4
+// alert(dict.get("name")); // Coderwhy
 
-// 字典的删除方法
-dict.remove("height");
-alert(dict.keys()); // age,name,address
+// // 字典的删除方法
+// dict.remove("height");
+// alert(dict.keys()); // age,name,address
 
-// 清空字典
-dict.clear();
+// // 清空字典
+// dict.clear();

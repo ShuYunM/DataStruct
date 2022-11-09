@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lbng="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <script>
+
+        // console.log(b);
+        // var b =function(){}
+        // var str = false+1;
+        // console.log(false);
+        // console.log(str);
+
+        // console.log( typeof( typeof(Function))  );
+        var x = 1;
+        console.log();
+        if(function f(){}){ 
+            x += typeof(f);
+            console.log(x);
+        }
+        console.log(x);
+        function aaa() {
+            a = 10;
+        }
+        aaa();
+        console.log(a);
+
+        // var a;//变量只声明不赋值，打印就是undefined
+
+        // // 函数覆盖了上面的aaa，所以上面aaa执行的下面的函数
+        // function aaa() {
+        //     var a = b = 10;
+        //     // 解析为var a = 10, b = 10
+        //     // 此时a是局部变量，b没有声明，是全局变量
+        //     console.log('哈哈哈哈哈');
+        // }
+        // aaa();
+        // console.log(a);//undefined
+        // console.log(b);//10
+        // console.log(a);
+
+
+    //     if (true) {
+    //   function foo() {
+    //     console.log(true);
+    //   }
+    // } else {
+    //   function foo() {
+    //     console.log(false);
+    //   }
+    // }
+    // foo();
+
+
+    // console.log(a);//undefined
+    // // a();//a is not a function
+    // var a = 3;
+    // var a = function () {
+    //   console.log(10);
+    // }
+    // console.log(a);
+    // a = 6;
+    // a();   
+    
+    
+
+    // function a(){
+    //     console.log(123 );
+    // }
+    // console.log(a() );
+    // for(var i = 0; i < 3; i++){
+    //     arr = function a(){
+    //         console.log(i);
+    //     }
+        
+    // }
+    // arr()
+    // console.log(i);
+    </script>
+    </script>
+</body>
+</html>

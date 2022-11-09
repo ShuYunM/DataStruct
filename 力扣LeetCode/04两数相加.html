@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var addTwoNumbers = function(l1, l2) {
+    let newl1 = l1.reverse().join('');
+    let newl2 = l2.reverse().join('');
+    let sum = (+newl1+ + newl2).toString().split('').reverse();
+    console.log(sum);
+    return sum
+};
+
+
+var addTwoNumbers = function(l1, l2) {
+    // 定义接收的字符串
+    let sum = '';
+    let sum2 = '';
+    
+    for(let i =0; i < l1.length; i ++){
+        // 将数组遍历相加为字符串 243
+        sum = sum + l1[i];
+    }
+    for(let j =0; j < l2.length; j++){
+        sum2 = sum2 + l2[j];
+    }
+    // let sum3 = +sum + +sum2
+    // 将字符串转变为数字型相加807
+    let sum3 = parseInt(sum) + parseInt(sum2);
+    // 在将807转变为字符串，方便循环遍历
+    sum3 = sum3.toString();
+    // 定义空数组，用于接收遍历的字符串807
+    let arr = [];
+    for(let j = 0; j < sum3.length; j++){
+        // 从最后一个开始放入数组，这样就是708了
+        arr.push(parseInt(sum3[sum3.length - j -1]));
+    }
+    return arr;
+};
+console.log(addTwoNumbers([2,4,3],[5,6,4]));
+    </script>
+</body>
+</html>

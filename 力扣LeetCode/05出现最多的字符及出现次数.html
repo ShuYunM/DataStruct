@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = '12345565654131889abcdef';
+        let obj = {
+            // 1:1,
+            // 2:2
+        };
+        str.split('').forEach((item,index,o) => {
+            if(obj[str[index]]){
+                // 如果存在就让他的属性值加1
+                obj[str[index]]++;
+            }else{
+                // 如果不存在就给他一个i属性，并赋值为1(因为此时是第一次出现)
+                obj[str[index]] = 1;
+            }
+            
+        });
+        console.log(obj);
+        // 判断出现最多的字符及出现的次数
+        let max = 1; //出现最多的字符
+        let count = obj['1'];//出现的次数
+        for (let key in obj){
+            if(count < obj[key]){
+                count = obj[key];
+                max = key;
+            }
+        }
+        console.log(max , count);
+    </script>
+</body>
+</html>
