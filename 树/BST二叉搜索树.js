@@ -167,7 +167,7 @@ function BinarySearchTree() {
         isLeftChild = true;
         current = current.left;
       }
-      if (!current) return false;
+      if (!current) return false; // 没有找到
     }
 
     // 到这已经说明找到了

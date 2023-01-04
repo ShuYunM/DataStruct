@@ -3,7 +3,7 @@
  * @param {*} data 传入的待检测数据
  * @return {*} 返回数据类型
  */
-function getType(data) {
+function getType (data) {
   // TODO：待补充代码
   if (typeof data === "string") {
     return "string";
@@ -71,7 +71,7 @@ let city = [
 
 const values = "山坡";
 let a = [];
-function getCity(data, item) {
+function getCity (data, item) {
   data.forEach((value) => {
     let parent;
     if (value.label.indexOf(item) !== -1) {
@@ -87,3 +87,26 @@ function getCity(data, item) {
 }
 getCity(city, values);
 console.log(a);
+
+var longestPalindrome = function (s) {
+  let str = "";
+  for (let i = 0, start = 0, end = 0; i < s.length; i++) {
+    start = i;
+    end = i;
+    while (end + 1 < s.length && s[end + 1] === s[i]) {
+      end += 1;
+    }
+    while (start - 1 >= 0 && end + 1 < s.length && s[end + 1] === s[start - 1]) {
+      end += 1;
+      start -= 1;
+    }
+    if (end > start && str.length < end - start + 1) {
+      str = s.slice(start, end + 1);
+    }
+  }
+  return str ? str : s[0];
+};
+
+console.log(longestPalindrome("babadablll"));
+
+

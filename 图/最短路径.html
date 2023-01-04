@@ -9,6 +9,7 @@
   <body>
     <script src="../链表/04、字典.js"></script>
     <script src="../队列结构/01队列类的创建.js"></script>
+    <script src="../栈结构//栈.js"></script>
     <script>
       function Graph() {
         // 属性：顶点(数组)/边(字典)
@@ -62,6 +63,12 @@
           // 3、将顶点加入到队列中
           queue.push(initV);
 
+          // 将所有的回溯设置为null
+          let prev = {};
+          for (let i = 0; i < this.vertexts.length; i++) {
+            prev[this.vertexts[i]] = null;
+          }
+
           // 4、循环从队列中取出元素
           //不为空就执行
           while (!queue.isEmpty()) {
@@ -79,12 +86,15 @@
               // 如果探测过就不许要加入到队列中了
               if (colors[e] === "white") {
                 colors[e] = "gray";
+                // 设置回溯点
+                prev[e] = v;
                 queue.push(e);
               }
             }
             handler(v);
             colors[v] = "black";
           }
+          return prev;
         };
 
         // 深度优先搜索
@@ -122,7 +132,7 @@
       for (let index = 0; index < myVer.length; index++) {
         graph.addVertex(myVer[index]);
       }
-      graph.initializeColor();
+      // graph.initializeColor();
 
       //3.添加边
       graph.addEdge("A", "B");
@@ -140,7 +150,7 @@
       alert(graph);
       let bfs = "";
       let dfs = "";
-      graph.bfs(graph.vertexts[0], function (v) {
+      let prev = graph.bfs(graph.vertexts[0], function (v) {
         bfs += v + " ";
       });
       graph.dfs(graph.vertexts[0], function (v) {
@@ -148,6 +158,28 @@
       });
       alert(bfs);
       alert(dfs);
+
+      console.log(prev);
+      // 最短路径
+      const shortPath = (from, to) => {
+        let vertex = to;
+        let stack = new Stack(); //放置每一次找到的路径
+        while (vertex !== from) {
+          stack.push(vertex);
+          vertex = prev[vertex]; //寻找自己的回溯点
+        }
+        stack.push(vertex);
+
+        let path = "";
+        while (!stack.isEmpty()) {
+          path += `${stack.pop()}=>`;
+        }
+        path = path.slice(0, path.length - 2);
+        return path;
+      };
+
+      const path = shortPath("A", "G");
+      console.log(path);
     </script>
   </body>
 </html>
